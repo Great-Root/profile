@@ -516,6 +516,48 @@
         }
         
         @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+                padding: 20px 0;
+            }
+            
+            .profile-section {
+                flex: 0 0 auto;
+                justify-content: center;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .profile-photo {
+                width: 38.2vw;
+                height: 38.2vw;
+                max-width: 200px;
+                max-height: 200px;
+                min-width: 150px;
+                min-height: 150px;
+            }
+            
+            .info-section {
+                flex: 0 0 auto;
+                text-align: center;
+                width: 100%;
+                padding: 0 20px;
+            }
+            
+            .qr-code-top {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            
+            .qr-code-top img,
+            .qr-code-bottom img {
+                width: 100px;
+                height: 100px;
+            }
+            
             .contact-item {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -528,14 +570,29 @@
             
             .hero {
                 min-height: 70vh;
+                padding: 30px 15px;
             }
             
             h1 {
-                font-size: 3rem;
+                font-size: clamp(2rem, 7vw, 2.5rem);
+                margin-bottom: 15px;
+                line-height: 1;
             }
             
             .subtitle {
-                font-size: 1.2rem;
+                font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+                margin-bottom: 8px;
+            }
+            
+            .company {
+                font-size: clamp(0.9rem, 3vw, 1rem);
+                margin-bottom: 25px;
+            }
+            
+            .badge {
+                font-size: 0.65rem;
+                padding: 6px 12px;
+                margin-bottom: 15px;
             }
             
             .journey {
@@ -558,6 +615,58 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                min-height: 100vh;
+                padding: 20px;
+            }
+            
+            .hero-content {
+                flex-direction: row;
+                gap: 40px;
+                text-align: left;
+                padding: 0;
+            }
+            
+            .profile-section {
+                flex: 0 0 38.2%;
+                justify-content: flex-end;
+                margin-bottom: 0;
+            }
+            
+            .profile-photo {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .info-section {
+                flex: 0 0 61.8%;
+                text-align: left;
+                padding: 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .company {
+                font-size: 1rem;
+            }
+            
+            .badge {
+                font-size: 0.7rem;
+                padding: 8px 16px;
+            }
+            
+            .qr-code-top {
+                justify-content: flex-start;
             }
         }
     </style>
