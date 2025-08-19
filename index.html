@@ -66,15 +66,17 @@
         .hero-content {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 60px;
             max-width: 1200px;
             width: 100%;
+            margin: 0 auto;
         }
         
         .profile-section {
             flex: 0 0 38.2%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
         }
         
         .profile-photo {
@@ -102,6 +104,7 @@
         .info-section {
             flex: 0 0 61.8%;
             text-align: left;
+            padding-left: 20px;
         }
         
         .badge {
@@ -206,15 +209,24 @@
             box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
         }
         
+        .timeline-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
         .timeline-content h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
             color: #ffffff;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .timeline-content p {
             color: #94a3b8;
             line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         
         .section {
@@ -365,10 +377,11 @@
         }
         
         .philosophy-values {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
             margin-top: 50px;
+            justify-content: center;
         }
         
         .value-item {
@@ -378,6 +391,9 @@
             padding: 30px;
             text-align: center;
             transition: all 0.3s ease;
+            flex: 0 1 calc(33.333% - 20px);
+            min-width: 250px;
+            max-width: 350px;
         }
         
         .value-item:hover {
@@ -390,6 +406,7 @@
             font-size: 1.3rem;
             margin-bottom: 15px;
             color: #ffffff;
+            white-space: nowrap;
         }
         
         .value-item p {
@@ -602,11 +619,31 @@
             .timeline-item {
                 flex-direction: column;
                 text-align: center;
+                overflow: visible;
+                min-height: auto;
             }
             
             .timeline-icon {
                 margin-right: 0;
                 margin-bottom: 20px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                padding: 0 10px;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.1rem;
+                word-wrap: break-word;
+                white-space: normal;
+            }
+            
+            .timeline-content p {
+                font-size: 0.95rem;
+                word-wrap: break-word;
+                white-space: normal;
+                line-height: 1.5;
             }
             
             .cards-grid {
@@ -615,6 +652,31 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+            
+            .philosophy-values {
+                gap: 20px;
+            }
+            
+            .value-item {
+                flex: 0 1 calc(50% - 10px);
+                min-width: 180px;
+                max-width: 300px;
+            }
+            
+            .value-item h3 {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .value-item {
+                flex: 0 1 100%;
+                max-width: 300px;
+            }
+            
+            .value-item h3 {
+                font-size: 1rem;
             }
         }
         
@@ -633,7 +695,7 @@
             
             .profile-section {
                 flex: 0 0 38.2%;
-                justify-content: flex-end;
+                justify-content: center;
                 margin-bottom: 0;
             }
             
@@ -743,18 +805,6 @@
             <h2 class="section-title">Career</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-period">2024.07 - 현재</div>
-                    <div class="card-title">메가존클라우드 AI/ML팀</div>
-                    <div class="card-role">AWS SA / AI Engineer | 매니저</div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">AWS</span>
-                        <span class="tech-tag">GenAI</span>
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">LangChain</span>
-                    </div>
-                </div>
-                
-                <div class="card">
                     <div class="card-period">2021.10 - 2024.07</div>
                     <div class="card-title">메가존클라우드 GCP팀</div>
                     <div class="card-role">GCP Solutions Architect | 매니저</div>
@@ -765,6 +815,18 @@
                         <span class="tech-tag">AI/ML</span>
                     </div>
                 </div>
+                
+                <div class="card">
+                    <div class="card-period">2024.07 - 현재</div>
+                    <div class="card-title">메가존클라우드 AI/ML팀</div>
+                    <div class="card-role">AWS SA / AI Engineer | 매니저</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">GenAI</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">LangChain</span>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -772,25 +834,37 @@
             <h2 class="section-title">Projects</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-period">2025.06 - 2025.08</div>
-                    <div class="card-title">e-commerce GenAI Agent 챗봇</div>
-                    <div class="card-company">FnC코오롱</div>
-                    <div class="card-role">AI 기반 고객 상담 챗봇 시스템 구축</div>
+                    <div class="card-period">2021.10 - 2024.07</div>
+                    <div class="card-title">카카오모빌리티 GCP 기술지원</div>
+                    <div class="card-company">카카오모빌리티</div>
+                    <div class="card-role">GCP DevOps 및 AI/ML 인프라 구축</div>
                     <div class="tech-tags">
-                        <span class="tech-tag">AWS Bedrock</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">GenAI</span>
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">ML Pipeline</span>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <div class="card-period">2025.04 - 2025.05</div>
-                    <div class="card-title">사내 MSP 챗봇 MCP 연동</div>
-                    <div class="card-company">메가존클라우드</div>
-                    <div class="card-role">사내 시스템 자동화 챗봇 개발</div>
+                    <div class="card-period">2024.07 - 2024.09</div>
+                    <div class="card-title">기독교 방송국 RAG 챗봇</div>
+                    <div class="card-company">지로드코리아</div>
+                    <div class="card-role">방송 콘텐츠 기반 지능형 검색</div>
                     <div class="tech-tags">
-                        <span class="tech-tag">MCP</span>
-                        <span class="tech-tag">Integration</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">Production</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-period">2024.10 - 2024.12</div>
+                    <div class="card-title">보험약관 문서 전처리</div>
+                    <div class="card-company">신화정보통신</div>
+                    <div class="card-role">대용량 문서 자동 분석 시스템</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Document AI</span>
+                        <span class="tech-tag">NLP</span>
                         <span class="tech-tag">AWS</span>
                     </div>
                 </div>
@@ -808,38 +882,26 @@
                 </div>
                 
                 <div class="card">
-                    <div class="card-period">2024.10 - 2024.12</div>
-                    <div class="card-title">보험약관 문서 전처리</div>
-                    <div class="card-company">신화정보통신</div>
-                    <div class="card-role">대용량 문서 자동 분석 시스템</div>
+                    <div class="card-period">2025.04 - 2025.05</div>
+                    <div class="card-title">사내 MSP 챗봇 MCP 연동</div>
+                    <div class="card-company">메가존클라우드</div>
+                    <div class="card-role">사내 시스템 자동화 챗봇 개발</div>
                     <div class="tech-tags">
-                        <span class="tech-tag">Document AI</span>
-                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">MCP</span>
+                        <span class="tech-tag">Integration</span>
                         <span class="tech-tag">AWS</span>
                     </div>
                 </div>
                 
                 <div class="card">
-                    <div class="card-period">2024.07 - 2024.09</div>
-                    <div class="card-title">기독교 방송국 RAG 챗봇</div>
-                    <div class="card-company">지로드코리아</div>
-                    <div class="card-role">방송 콘텐츠 기반 지능형 검색</div>
+                    <div class="card-period">2025.06 - 2025.08</div>
+                    <div class="card-title">e-commerce GenAI Agent 챗봇</div>
+                    <div class="card-company">FnC코오롱</div>
+                    <div class="card-role">AI 기반 고객 상담 챗봇 시스템 구축</div>
                     <div class="tech-tags">
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">Production</span>
-                        <span class="tech-tag">AWS</span>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-period">2021.10 - 2024.07</div>
-                    <div class="card-title">카카오모빌리티 GCP 기술지원</div>
-                    <div class="card-company">카카오모빌리티</div>
-                    <div class="card-role">GCP DevOps 및 AI/ML 인프라 구축</div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">GCP</span>
-                        <span class="tech-tag">Kubernetes</span>
-                        <span class="tech-tag">ML Pipeline</span>
+                        <span class="tech-tag">AWS Bedrock</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">GenAI</span>
                     </div>
                 </div>
             </div>
