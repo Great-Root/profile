@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김보근 - Cloud Solutions Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj4KICA8ZmlsdGVyIGlkPSJhIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIuNzUiIG51bU9jdGF2ZXM9IjEwIi8+CiAgICA8ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+CiAgPC9maWx0ZXI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIxIi8+Cjwvc3ZnPg==');
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 80px;
+            padding: 40px 20px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .profile-section {
+            flex-shrink: 0;
+        }
+        
+        .profile-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.4);
+            animation: float 6s ease-in-out infinite;
+            background: rgba(20, 20, 20, 0.6);
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .info-section {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.8); }
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .company {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 40px;
+        }
+        
+        .journey {
+            padding: 60px 40px;
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .journey::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #6366f1, transparent);
+            animation: slide 3s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .journey-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 30px;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .timeline-content p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 2px;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6366f1, transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .card-period {
+            font-size: 0.9rem;
+            color: #6366f1;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .card-company {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+        
+        .card-role {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .tech-tag {
+            padding: 6px 12px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: #a5b4fc;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tag:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .philosophy {
+            padding: 80px 20px;
+            margin-bottom: 80px;
+        }
+        
+        .philosophy-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .philosophy-quote {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 20px;
+            border-left: 4px solid #6366f1;
+            color: #ffffff;
+        }
+        
+        .philosophy-text {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .philosophy-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+        
+        .philosophy-text strong {
+            color: #a5b4fc;
+            font-weight: 600;
+        }
+        
+        .philosophy-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-item {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .value-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+        }
+        
+        .value-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .value-item p {
+            font-size: 1rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        
+        .contact {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+        
+        .contact-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-info {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info a {
+            color: #a5b4fc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: #6366f1;
+        }
+        
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-label {
+            color: #64748b;
+            font-weight: 600;
+            text-align: right;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .contact-item a {
+            color: #a5b4fc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: #6366f1;
+            transform: translateX(5px);
+        }
+        
+        .contact-cta {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .contact-cta p {
+            font-size: 1rem;
+            color: #a5b4fc;
+            font-weight: 400;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .contact-label {
+                text-align: center;
+            }
+            
+            .hero {
+                min-height: 70vh;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .journey {
+                padding: 40px 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="profile-section">
+                    <div class="profile-photo">
+                        <img src="data:image/jpeg;base64,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" alt="김보근">
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="badge">Cloud Solutions Engineer</div>
+                    <h1>김보근</h1>
+                    <div class="subtitle">AWS AI Engineer & Solutions Architect</div>
+                    <div class="company">메가존클라우드 | 매니저</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="journey">
+            <h2 class="journey-title">My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">🎓</div>
+                    <div class="timeline-content">
+                        <h3>동양대학교 철도차량학과 졸업</h3>
+                        <p>기계공학을 전공하며 논리적 사고와 문제 해결 능력의 기초를 다졌습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">💻</div>
+                    <div class="timeline-content">
+                        <h3>스프링 클라우드 기반 응용SW개발자 과정 (6개월)</h3>
+                        <p>IT 분야로의 전환을 위해 집중적으로 Spring Cloud, MSA, DevOps를 학습했습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">🚀</div>
+                    <div class="timeline-content">
+                        <h3>메가존클라우드 입사</h3>
+                        <p>2021년 10월, 클라우드 엔지니어로서의 커리어를 시작했습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">☁️</div>
+                    <div class="timeline-content">
+                        <h3>GCP Solutions Architect</h3>
+                        <p>3년간 카카오모빌리티의 GCP 인프라 및 AI/ML 플랫폼을 담당했습니다.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">🤖</div>
+                    <div class="timeline-content">
+                        <h3>AWS AI Engineer</h3>
+                        <p>현재는 GenAI와 RAG 기술을 활용한 엔터프라이즈 AI 솔루션을 구축하고 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Career</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-period">2024.07 - 현재</div>
+                    <div class="card-title">메가존클라우드 AI/ML팀</div>
+                    <div class="card-role">AWS SA / AI Engineer | 매니저</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">GenAI</span>
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">LangChain</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-period">2021.10 - 2024.07</div>
+                    <div class="card-title">메가존클라우드 GCP팀</div>
+                    <div class="card-role">GCP Solutions Architect | 매니저</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">DevOps</span>
+                        <span class="tech-tag">AI/ML</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-period">2025.06 - 2025.08</div>
+                    <div class="card-title">e-commerce GenAI Agent 챗봇</div>
+                    <div class="card-company">FnC코오롱</div>
+                    <div class="card-role">AI 기반 고객 상담 챗봇 시스템 구축</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">AWS Bedrock</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">GenAI</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-period">2025.04 - 2025.05</div>
+                    <div class="card-title">사내 MSP 챗봇 MCP 연동</div>
+                    <div class="card-company">메가존클라우드</div>
+                    <div class="card-role">사내 시스템 자동화 챗봇 개발</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">MCP</span>
+                        <span class="tech-tag">Integration</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-period">2025.01 - 2025.03</div>
+                    <div class="card-title">치과 생체재료 GenAI RAG 챗봇</div>
+                    <div class="card-company">푸르고바이오로직스</div>
+                    <div class="card-role">의료 제품 정보 검색 RAG 시스템</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">Vector DB</span>
+                        <span class="tech-tag">OpenSearch</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-period">2024.10 - 2024.12</div>
+                    <div class="card-title">보험약관 문서 전처리</div>
+                    <div class="card-company">신화정보통신</div>
+                    <div class="card-role">대용량 문서 자동 분석 시스템</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Document AI</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-period">2024.07 - 2024.09</div>
+                    <div class="card-title">기독교 방송국 RAG 챗봇</div>
+                    <div class="card-company">지로드코리아</div>
+                    <div class="card-role">방송 콘텐츠 기반 지능형 검색</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">Production</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-period">2021.10 - 2024.07</div>
+                    <div class="card-title">카카오모빌리티 GCP 기술지원</div>
+                    <div class="card-company">카카오모빌리티</div>
+                    <div class="card-role">GCP DevOps 및 AI/ML 인프라 구축</div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">ML Pipeline</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="philosophy">
+            <h2 class="section-title">My Philosophy</h2>
+            <div class="philosophy-content">
+                <div class="philosophy-quote">
+                    "기술은 도구일 뿐, 진정한 가치는 사람이 만듭니다"
+                </div>
+                <div class="philosophy-text">
+                    <p>클라우드와 AI 기술이 빠르게 발전하는 시대에서 가장 중요한 것은 <strong>기술 자체가 아닌 기술을 대하는 태도</strong>입니다.</p>
+                    <p>새로운 기술을 두려워하지 않고 <strong>호기심</strong>을 가지며, 실패를 <strong>학습의 기회</strong>로 삼고, 
+                    동료와 함께 <strong>성장</strong>하는 것이 진정한 엔지니어의 자세라고 믿습니다.</p>
+                    <p>기술은 계속 변하지만, <strong>문제를 해결하려는 열정</strong>과 <strong>끊임없이 배우려는 자세</strong>는 
+                    시대를 초월하는 가치입니다.</p>
+                </div>
+                <div class="philosophy-values">
+                    <div class="value-item">
+                        <h3>🌱 Growth Mindset</h3>
+                        <p>어제보다 나은 오늘, 끊임없는 성장</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>🤝 Collaboration</h3>
+                        <p>함께 가면 더 멀리 갈 수 있습니다</p>
+                    </div>
+                    <div class="value-item">
+                        <h3>💡 Innovation</h3>
+                        <p>현재에 안주하지 않고 더 나은 방법 찾기</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <h2 class="contact-title">Let's Build the Future Together</h2>
+            <div class="contact-subtitle">클라우드와 AI 기술로 비즈니스 혁신을 함께 만들어갑시다</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-label">Name</span>
+                    <span>김보근</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:bgkim@megazone.com">bgkim@megazone.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Mobile</span>
+                    <a href="tel:010-7441-6128">010-7441-6128</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Company</span>
+                    <span>메가존클라우드 AI/ML Team</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Expertise</span>
+                    <span>GenAI • RAG • Cloud Architecture • MLOps</span>
+                </div>
+            </div>
+            <div class="contact-cta">
+                <p>프로젝트 협업, 기술 자문, 멘토링 등 언제든 연락주세요</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
